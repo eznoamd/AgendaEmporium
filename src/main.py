@@ -7,4 +7,15 @@
 # ou 
 # py main.py
 
-print('Hello World')
+class TesteBanco:
+    def __init__(self):
+        self.table = 'TesteBanco'
+        self.id = 1
+        self.descricao = "trocado"
+
+from model.database.AdapterDatabase import AdapterDatabase
+
+adapter = AdapterDatabase()
+adapter.connect()
+print(adapter.delete(TesteBanco()))
+adapter.close()
