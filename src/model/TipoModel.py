@@ -2,7 +2,7 @@ from database.AdapterDatabase import AdapterDatabase
 
 class TipoModel:
     def __init__(self):
-        self.table = 'Tipo'
+        self.table = 'tipo'
 
     def criar_tipo(self, nome, filtros):
         # cria tudo necessario no atual obj para enviar para o banco
@@ -20,3 +20,27 @@ class TipoModel:
         if err is not None:
             return err
         return True
+    
+    def deletar_tipo(self, id):
+        # conecta ao banco e deleta o obj
+        db = AdapterDatabase()
+        db.connect()
+        err = db.desative_line(obj = self)
+        db.close()
+        
+        # verifica se houve erro
+        if err is not None:
+            return err
+        return True
+    
+    def get_all(self, id):
+        #conecta ao banco e pega toda a tabela
+        db = AdapterDatabase()
+        db.connect()
+        listaTipo = db.select(obj = self)
+        db.close()
+        
+        # verifica se houve erro
+        if err is not None:
+            return err
+        return listaTipo
