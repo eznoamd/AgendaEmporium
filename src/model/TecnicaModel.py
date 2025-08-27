@@ -32,7 +32,7 @@ class TecnicaModel:
             return err
         return True
     
-    def get_all(self, id):
+    def get_all(self):
         #conecta ao banco e pega toda a tabela
         db = AdapterDatabase()
         db.connect()
