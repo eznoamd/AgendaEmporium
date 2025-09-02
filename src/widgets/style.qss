@@ -1,0 +1,85 @@
+/* Main window */
+#MainWindow {
+    background-color: #fff;
+}
+
+/* Botao que troca o menu */
+#button_change {
+    padding: 5px;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+/* Header */
+#header_widget {
+    background-color: #f9fafd;
+}
+
+/* Sidebar icones */
+#icons_widget {
+    background-color: #313a46;
+}
+
+#icons_widget QPushButton,
+#icons_widget QLabel {
+    height: 50px;
+    border: none;
+}
+
+#icons_widget QPushButton:hover {
+    background-color: rgba(86, 101, 115, 0.5);
+}
+
+/* Logo */
+#logo {
+    padding: 5px;
+}
+
+/* Sidebar completa (icone + texto) */
+#full_menu_widget {
+    background-color: #313a46;
+}
+
+#full_menu_widget QPushButton {
+    border: none;
+    border-radius: 3px;
+    text-align: left;
+    padding: 8px 0 8px 15px;
+    color: #788596;
+}
+
+#full_menu_widget QPushButton:hover {
+    background-color: rgba(86, 101, 115, 0.5);
+}
+
+#full_menu_widget QPushButton:checked {
+    color: #fff;
+}
+
+/* Logo no menu */
+#logo_2 {
+    padding: 5px;
+    color: #fff;
+}
+
+/* Titulo app */
+#title {
+    padding-right: 10px;
+    color: #fff;
+}
+
+/* Search button */
+#button_search {
+    border: none;
+    padding: 5px 10px;
+}
+
+#button_search:focus {
+    background-color: #70B9FE;
+}
+
+/* User button */
+#button_user {
+    border: none;
+}

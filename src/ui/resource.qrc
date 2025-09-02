@@ -1,0 +1,21 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>icons/icon_agendamento.svg</file>
+    <file>icons/icon_agendamento_on.svg</file>
+    <file>icons/icon_cliente.svg</file>
+    <file>icons/icon_cliente_on.svg</file>
+    <file>icons/icon_exit.svg</file>
+    <file>icons/icon_exit_on.svg</file>
+    <file>icons/icon_menu.svg</file>
+    <file>icons/icon_menu_on.svg</file>
+    <file>icons/icon_procedimentos.svg</file>
+    <file>icons/icon_procedimentos_on.svg</file>
+    <file>icons/icon_search.svg</file>
+    <file>icons/icon_search_on.svg</file>
+    <file>icons/icon_status.svg</file>
+    <file>icons/icon_status_on.svg</file>
+    <file>icons/icon_tecnica.svg</file>
+    <file>icons/icon_tecnica_on.svg</file>
+    <file>icons/logo.png</file>
+  </qresource>
+</RCC>
