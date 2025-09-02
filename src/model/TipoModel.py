@@ -4,7 +4,6 @@ class TipoModel:
     def __init__(self, id=None, nome=None, filtros=None, ativo=None):
         self.table = 'tipo'
 
-
         '''
         Isso aqui em baixo e nos parametros
         '''
