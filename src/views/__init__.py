@@ -1,8 +1,8 @@
-from .agendamentos import setup_page as setup_agendamentos
-from .procedimentos import setup_page as setup_procedimentos
-from .status import setup_page as setup_status
-from .tecnicas import setup_page as setup_tecnicas
-from .clientes import setup_page as setup_clientes
+from .AgendamentosView import setup_page as setup_agendamentos
+from .ProcedimentosView import setup_page as setup_procedimentos
+from .StatusView import setup_page as setup_status
+from .TecnicasView import setup_page as setup_tecnicas
+from .ClientesView import setup_page as setup_clientes
 
 
 def setup_all(ui):
