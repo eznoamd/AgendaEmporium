@@ -1,4 +1,10 @@
 openpyxl
-mysql-connector-python
+pandas
+
 python-dotenv
-PyQt5
+pyside6
+
+mysql-connector-python
+sqlite3
+
+logging
