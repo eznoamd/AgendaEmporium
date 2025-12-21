@@ -24,6 +24,7 @@ create table cliente(
     id int auto_increment,
     nome varchar(128),
     codigo varchar(300),
+    ativo bool,
     primary key(id)
 );
 create table agendamento(

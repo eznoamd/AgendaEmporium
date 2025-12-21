@@ -18,7 +18,7 @@
 
 /* Sidebar icones */
 #icons_widget {
-    background-color: #313a46;
+    background-color: #35383E;
 }
 
 #icons_widget QPushButton,
@@ -38,7 +38,7 @@
 
 /* Sidebar completa (icone + texto) */
 #full_menu_widget {
-    background-color: #313a46;
+    background-color: #35383E;
 }
 
 #full_menu_widget QPushButton {

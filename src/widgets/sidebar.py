@@ -221,33 +221,23 @@ class Ui_MainWindow(object):
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_agendamentos = QtWidgets.QWidget()
         self.page_agendamentos.setObjectName("page_agendamentos")
-        self.label = QtWidgets.QLabel(self.page_agendamentos)
-        self.label.setGeometry(QtCore.QRect(280, 300, 47, 13))
-        self.label.setObjectName("label")
+        
         self.stackedWidget.addWidget(self.page_agendamentos)
         self.page_procedimentos = QtWidgets.QWidget()
         self.page_procedimentos.setObjectName("page_procedimentos")
-        self.label_2 = QtWidgets.QLabel(self.page_procedimentos)
-        self.label_2.setGeometry(QtCore.QRect(270, 300, 47, 13))
-        self.label_2.setObjectName("label_2")
+        
         self.stackedWidget.addWidget(self.page_procedimentos)
         self.page_status = QtWidgets.QWidget()
         self.page_status.setObjectName("page_status")
-        self.label_3 = QtWidgets.QLabel(self.page_status)
-        self.label_3.setGeometry(QtCore.QRect(250, 320, 47, 13))
-        self.label_3.setObjectName("label_3")
+        
         self.stackedWidget.addWidget(self.page_status)
         self.page_tecnicas = QtWidgets.QWidget()
         self.page_tecnicas.setObjectName("page_tecnicas")
-        self.label_4 = QtWidgets.QLabel(self.page_tecnicas)
-        self.label_4.setGeometry(QtCore.QRect(260, 340, 47, 13))
-        self.label_4.setObjectName("label_4")
+        
         self.stackedWidget.addWidget(self.page_tecnicas)
         self.page_clientes = QtWidgets.QWidget()
         self.page_clientes.setObjectName("page_clientes")
-        self.label_5 = QtWidgets.QLabel(self.page_clientes)
-        self.label_5.setGeometry(QtCore.QRect(260, 320, 47, 13))
-        self.label_5.setObjectName("label_5")
+
         self.stackedWidget.addWidget(self.page_clientes)
         self.verticalLayout_5.addWidget(self.stackedWidget)
         self.horizontalLayout_4.addWidget(self.work_table_widget)
@@ -281,11 +271,6 @@ class Ui_MainWindow(object):
         self.button_profissional_2.setText(_translate("MainWindow", "Profissionais"))
         self.button_cliente_2.setText(_translate("MainWindow", "Clientes"))
         self.button_exit_2.setText(_translate("MainWindow", "Sair"))
-        self.label.setText(_translate("MainWindow", "Agendamentos"))
-        self.label_2.setText(_translate("MainWindow", "procedimentos"))
-        self.label_3.setText(_translate("MainWindow", "status"))
-        self.label_4.setText(_translate("MainWindow", "tecnicos"))
-        self.label_5.setText(_translate("MainWindow", "clientes"))
 from .resource import *
 
 

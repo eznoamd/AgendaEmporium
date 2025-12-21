@@ -1,9 +1,10 @@
 from database.AdapterDatabase import AdapterDatabase
+from model.base.BaseModel import BaseModel
 
-class ClienteModel:
+class ClienteModel(BaseModel):
+    table = "cliente"
+
     def __init__(self, id=None, nome=None, codigo=None):
-        self.table = 'cliente'
-        
         self.id = id
         self.nome = nome
         self.codigo = codigo
@@ -31,20 +32,12 @@ class ClienteModel:
         db.connect()
         listaCliente = db.select(obj = self)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaCliente
     
     def get_by_id(self, id):
         #conecta ao banco e pega toda a tabela
         db = AdapterDatabase()
         db.connect()
-        listaCLiente = db.select(obj = self, id = id)
+        listaCliente = db.select(obj = self, id = id)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaCliente

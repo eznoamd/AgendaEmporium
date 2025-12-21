@@ -1,9 +1,11 @@
 from database.AdapterDatabase import AdapterDatabase
+from model.base.BaseModel import BaseModel
 
-class TipoModel:
+
+class TipoModel(BaseModel):
+    table = "tipo"
+
     def __init__(self, id=None, nome=None, filtros=None, ativo=None):
-        self.table = 'tipo'
-
         '''
         Isso aqui em baixo e nos parametros
         '''
@@ -47,10 +49,6 @@ class TipoModel:
         db.connect()
         listaTipo = db.select(obj = self)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaTipo
     
     '''
@@ -62,9 +60,5 @@ class TipoModel:
         db.connect()
         listaTipo = db.select(obj = self, id = id)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaTipo
 

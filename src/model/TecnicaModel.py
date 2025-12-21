@@ -1,9 +1,10 @@
 from database.AdapterDatabase import AdapterDatabase
+from model.base.BaseModel import BaseModel
 
-class TecnicaModel:
+class TecnicaModel(BaseModel):
+    table = "tecnica"
+
     def __init__(self, id=None, nome=None, ativo=None):
-        self.table = 'tecnica'
-        
         self.id = id
         self.nome = nome
         self.ativo = ativo
@@ -42,10 +43,6 @@ class TecnicaModel:
         db.connect()
         listaTecnica = db.select(obj = self)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaTecnica
     
     def get_by_id(self, id):
@@ -54,10 +51,4 @@ class TecnicaModel:
         db.connect()
         listaTecnica = db.select(obj = self, id = id)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaTecnica
-    
-    

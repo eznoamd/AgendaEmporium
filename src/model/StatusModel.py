@@ -1,9 +1,10 @@
 from database.AdapterDatabase import AdapterDatabase
+from model.base.BaseModel import BaseModel
 
-class StatusModel:
+class StatusModel(BaseModel):
+    table = "status"
+
     def __init__(self, id=None, nome=None, cor=None, ativo=None):
-        self.table = 'status'
-        
         self.id = id
         self.nome = nome
         self.cor = cor
@@ -44,10 +45,6 @@ class StatusModel:
         db.connect()
         listaStatus = db.select(obj = self)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaStatus
     
     def get_by_id(self, id):
@@ -56,8 +53,4 @@ class StatusModel:
         db.connect()
         listaStatus = db.select(obj = self, id = id)
         db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
         return listaStatus
