@@ -1,54 +1,50 @@
 from database.AdapterDatabase import AdapterDatabase
 from model.base.BaseModel import BaseModel
+from utils.logs import get_logger
+
+
+logger = get_logger(__name__)
 
 
 class TipoModel(BaseModel):
-    table = "tipo"
 
-    def __init__(self, id=None, nome=None, filtros=None, ativo=None):
-        '''
-        Isso aqui em baixo e nos parametros
-        '''
+    table = "service_types"
+
+    def __init__(self, id=None, name=None, filters=None, active=1):
         self.id = id
-        self.nome = nome
-        self.filtros = filtros
-        self.ativo = ativo
+        self.name = name
+        self.filters = filters
+        self.active = active
 
-    def criar_tipo(self, nome, filtros):
+    def criar_tipo(self, name, filters):
         # cria tudo necessario no atual obj para enviar para o banco
-        self.nome = nome
-        self.filtros = filtros
-        self.ativo = 1
+        self.name = name
+        self.filters = filters
+        self.active = 1
 
         # conecta ao banco e insere o obj
-        db = AdapterDatabase()
-        db.connect()
-        err = db.insert(obj = self)
-        db.close()
-        
-        # verifica se houve erro
-        if err is not None:
-            return err
+        logger.info("Criando tipo de serviço name=%s", name)
+        with AdapterDatabase() as db:
+            db.insert(obj=self)
+
+        logger.debug("Tipo de serviço criado com id=%s", self.id)
         return True
     
     def deletar_tipo(self, id):
         # conecta ao banco e deleta o obj
-        db = AdapterDatabase()
-        db.connect()
-        err = db.desative_line(obj = self)
-        db.close()
-        
+        self.id = id
+        logger.info("Desativando tipo de serviço id=%s", id)
+        with AdapterDatabase() as db:
+            db.desative_line(obj=self)
+
         # verifica se houve erro
-        if err is not None:
-            return err
         return True
     
     def get_all(self):
         #conecta ao banco e pega toda a tabela
-        db = AdapterDatabase()
-        db.connect()
-        listaTipo = db.select(obj = self)
-        db.close()
+        logger.debug("Buscando todos os tipos de serviço")
+        with AdapterDatabase() as db:
+            listaTipo = db.select(obj=self)
         return listaTipo
     
     '''
@@ -56,9 +52,7 @@ class TipoModel(BaseModel):
     '''
     def get_by_id(self, id):
         #conecta ao banco e pega toda a tabela
-        db = AdapterDatabase()
-        db.connect()
-        listaTipo = db.select(obj = self, id = id)
-        db.close()
+        with AdapterDatabase() as db:
+            listaTipo = db.select(obj=self, id=id)
         return listaTipo
 
