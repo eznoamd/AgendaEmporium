@@ -10,15 +10,17 @@ class TipoModel(BaseModel):
 
     table = "service_types"
 
-    def __init__(self, id=None, name=None, filters=None, active=1):
+    def __init__(self, id=None, name=None, duration=None, filters=None, active=1):
         self.id = id
         self.name = name
+        self.duration = duration 
         self.filters = filters
         self.active = active
 
-    def criar_tipo(self, name, filters):
+    def criar_tipo(self, name, duration, filters):
         # cria tudo necessario no atual obj para enviar para o banco
         self.name = name
+        self.duration = duration
         self.filters = filters
         self.active = 1
 

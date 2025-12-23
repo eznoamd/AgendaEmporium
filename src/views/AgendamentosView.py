@@ -10,5 +10,4 @@ def setup_page(page: QWidget) -> None:
     view = AgendamentosView(page)
     layout.addWidget(view)
 
-    # opcional: guardar referência
     page._view = view

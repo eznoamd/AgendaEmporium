@@ -1,6 +1,13 @@
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QVBoxLayout
+from views.procedimentos.procedimento_view import ProcedimentoView
 
 
 def setup_page(page: QWidget) -> None:
-    """Personalização da página de Procedimentos."""
-    page.setObjectName("page_procedimentos_custom")
+    """
+    Adapter de inicialização da página de Procedimentos.
+    """
+    layout = QVBoxLayout(page)
+    view = ProcedimentoView(page)
+    layout.addWidget(view)
+
+    page._view = view
