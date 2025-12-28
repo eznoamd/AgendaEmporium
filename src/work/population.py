@@ -1,7 +1,7 @@
 import argparse
 import sqlite3
 from work.seed.initial_seeder import InitialDataSeeder
-
+from utils.path import get_database_path
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
 
     args = parser.parse_args()
 
-    conn = sqlite3.connect("../data/database/database.db")
+    conn = sqlite3.connect(get_database_path())
 
     try:
         with conn:
