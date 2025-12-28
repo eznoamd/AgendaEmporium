@@ -26,6 +26,10 @@ class CalendarPanelWidget(QWidget):
 
         self._build_ui()
         self._sync_month_label()
+        self.calendar.currentPageChanged.connect(
+            lambda y, m: self._sync_month_label()
+        )
+
 
     # -------------------------
     # UI
@@ -93,10 +97,14 @@ class CalendarPanelWidget(QWidget):
         self._sync_month_label()
 
     def _sync_month_label(self):
-        date = self.calendar.selectedDate()
+        month = self.calendar.monthShown()
+        year = self.calendar.yearShown()
+
+        date = QDate(year, month, 1)
         self.month_label.setText(
             date.toString("MMMM yyyy").capitalize()
         )
+
 
     # -------------------------
     # Estilo isolado
@@ -139,15 +147,15 @@ class CalendarPanelWidget(QWidget):
             QCalendarWidget QAbstractItemView {
                 selection-background-color: #6C9EFF;
                 selection-color: white;
-                font-size: 15px;
+                font-size: 20px;
                 gridline-color: #D0D0D0;
             }
 
             /* Cabeçalho (Seg, Ter, Qua...) */
             QCalendarWidget QHeaderView::section {
-                font-size: 14px;
-                font-weight: bold;       /* ← bolder aqui */
-                color: #333;
+                font-size: 20px;
+                font-weight: bold;
+                color: #FFFFFF;
                 background-color: #F7F7F7;
                 border: 1px solid #E0E0E0;
             }

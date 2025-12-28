@@ -7,7 +7,7 @@ PRAGMA foreign_keys = ON;
 -- =====================================================
 -- STATUS (cores / estados do agendamento)
 -- =====================================================
-CREATE TABLE statuses (
+CREATE TABLE IF NOT EXISTS statuses (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     color_hex TEXT NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE statuses (
 -- =====================================================
 -- TIPOS DE SERVIÇO (antigo "tipo")
 -- =====================================================
-CREATE TABLE service_types (
+CREATE TABLE IF NOT EXISTS service_types (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     duration INTEGER,
@@ -28,7 +28,7 @@ CREATE TABLE service_types (
 -- =====================================================
 -- TÉCNICOS (antiga "tecnica")
 -- =====================================================
-CREATE TABLE technicians (
+CREATE TABLE IF NOT EXISTS technicians (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     active INTEGER DEFAULT 1
@@ -37,7 +37,7 @@ CREATE TABLE technicians (
 -- =====================================================
 -- CLIENTES
 -- =====================================================
-CREATE TABLE clients (
+CREATE TABLE IF NOT EXISTS clients (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     code TEXT,
@@ -47,7 +47,7 @@ CREATE TABLE clients (
 -- =====================================================
 -- AGENDAMENTOS (TABELA CENTRAL)
 -- =====================================================
-CREATE TABLE appointments (
+CREATE TABLE IF NOT EXISTS appointments (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
 
     -- Data e horário (ISO 8601)
@@ -85,14 +85,27 @@ CREATE TABLE appointments (
 -- =====================================================
 -- ÍNDICES (PERFORMANCE)
 -- =====================================================
-CREATE INDEX idx_appointments_date
+CREATE INDEX IF NOT EXISTS idx_appointments_date
 ON appointments(date);
 
-CREATE INDEX idx_appointments_technician
+CREATE INDEX IF NOT EXISTS idx_appointments_technician
 ON appointments(technician_id);
 
-CREATE INDEX idx_appointments_client
+CREATE INDEX IF NOT EXISTS idx_appointments_client
 ON appointments(client_id);
+
+
+-- =====================================================
+-- SEEDS
+-- =====================================================
+CREATE TABLE IF NOT EXISTS seeds (
+    name TEXT NOT NULL,
+    version INTEGER NOT NULL,
+    applied_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (name, version)
+);
+
+
 
 -- =====================================================
 -- DADOS INICIAIS (OPCIONAL)
@@ -244,16 +257,16 @@ INSERT INTO service_types (name, duration, filters, active) VALUES
 'ultrassom microfocado interno coxa dentro',1),
 
 -- LASER
-('Laser - abdomên',15,
+('Laser - abdomên',30,
 'laser abdomen barriga depilacao',1),
 
-('Laser - Ante braços',15,
+('Laser - Ante braços',30,
 'laser antebraco ante braco depilacao',1),
 
-('Laser - Aréolas + seio',15,
+('Laser - Aréolas + seio',30,
 'laser areola seio mama',1),
 
-('Laser - Axilas',15,
+('Laser - Axilas',30,
 'laser axila axilas depilacao',1),
 
 ('Laser - barba masculina',30,
@@ -262,7 +275,7 @@ INSERT INTO service_types (name, duration, filters, active) VALUES
 ('Laser - Braço completo',30,
 'laser braco completo depilacao',1),
 
-('Laser - buço',10,
+('Laser - buço',30,
 'laser buco bigode',1),
 
 ('Laser - costas',30,
@@ -274,62 +287,62 @@ INSERT INTO service_types (name, duration, filters, active) VALUES
 ('Laser - facial completo',30,
 'laser facial rosto completo',1),
 
-('Laser - faixa da barba',20,
+('Laser - faixa da barba',30,
 'laser faixa barba',1),
 
 ('Laser - glabela',5,
 'laser glabela entre sobrancelha',1),
 
-('Laser - gluteos',15,
+('Laser - gluteos',30,
 'laser gluteos bumbum',1),
 
-('Laser - joelho',10,
+('Laser - joelho',30,
 'laser joelho',1),
 
-('Laser - lateral do rosto',15,
+('Laser - lateral do rosto',30,
 'laser lateral rosto',1),
 
-('Laser - linha alba',15,
+('Laser - linha alba',30,
 'laser linha alba barriga',1),
 
-('Laser - lombar',15,
+('Laser - lombar',30,
 'laser lombar costas',1),
 
-('Laser - mãos',15,
+('Laser - mãos',30,
 'laser maos mao',1),
 
-('Laser - maxilar',15,
+('Laser - maxilar',30,
 'laser maxilar mandibula',1),
 
 ('Laser - meia perna',30,
 'laser meia perna canela',1),
 
-('Laser - meio braço',20,
+('Laser - meio braço',30,
 'laser meio braco',1),
 
-('Laser - mento',15,
+('Laser - mento',30,
 'laser mento queixo',1),
 
-('Laser - nuca',20,
+('Laser - nuca',30,
 'laser nuca pescoco',1),
 
-('Laser - ombros',20,
+('Laser - ombros',30,
 'laser ombros',1),
 
-('Laser - peito',15,
+('Laser - peito',30,
 'laser peito torax',1),
 
-('Laser - perianal',20,
+('Laser - perianal',30,
 'laser perianal anal',1),
 
-('Laser - pernas inteiras',60,
+('Laser - pernas inteiras',30,
 'laser pernas inteiras perna completa',1),
 
-('Laser - pés',15,
+('Laser - pés',30,
 'laser pes pe',1),
 
-('Laser - testa',15,
+('Laser - testa',30,
 'laser testa fronte',1),
 
-('Laser - virilha',20,
+('Laser - virilha',30,
 'laser virilha bikini',1);

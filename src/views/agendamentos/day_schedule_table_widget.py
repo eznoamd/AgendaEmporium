@@ -3,16 +3,43 @@ from PySide6.QtCore import Qt, QDate
 from model.TecnicaModel import TecnicaModel
 from PySide6.QtWidgets import QHeaderView
 
-
-
 class DayScheduleTableWidget(QTableWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
 
         self.setEditTriggers(QTableWidget.NoEditTriggers)
         self.verticalHeader().setVisible(False)
+        self.verticalHeader().setDefaultSectionSize(60)
+        self.setSelectionMode(QTableWidget.SingleSelection)
+        self.setSelectionBehavior(QTableWidget.SelectItems)
+
 
         self.tecnicos = []
+
+
+    def _apply_style(self):
+        self.setStyleSheet("""
+            QTableWidget {
+                background-color: #ffffff;
+                gridline-color: #e6e6e6;
+                font-size: 12px;
+            }
+
+            QHeaderView::section {
+                background-color: #f8f9fa;
+                border: 1px solid #e6e6e6;
+                padding: 6px;
+                font-weight: bold;
+            }
+
+            QTableWidget::item {
+                border: 1px solid #f0f0f0;
+            }
+
+            QTableWidget::item:selected {
+                background-color: #d0ebff;
+            }
+        """)
 
 
 
@@ -30,6 +57,11 @@ class DayScheduleTableWidget(QTableWidget):
         self._configure_headers()
         self._build_headers()
         self._build_time_column(times)
+        self._build_empty_cells()
+        self._apply_style()
+        self.setShowGrid(True)
+        self.setAlternatingRowColors(False)
+
 
 
     def _build_headers(self):
@@ -40,9 +72,11 @@ class DayScheduleTableWidget(QTableWidget):
     def _build_time_column(self, times):
         for row, time in enumerate(times):
             item = QTableWidgetItem(time)
-            item.setTextAlignment(Qt.AlignCenter)
+            item.setTextAlignment(Qt.AlignTop | Qt.AlignHCenter)
+            item.setForeground(Qt.gray)
             item.setFlags(Qt.ItemIsEnabled)
             self.setItem(row, 0, item)
+
 
     def _load_tecnicos(self):
         model = TecnicaModel()
@@ -65,17 +99,23 @@ class DayScheduleTableWidget(QTableWidget):
 
         return times
 
-    from PySide6.QtWidgets import QHeaderView
-
     def _configure_headers(self):
         header = self.horizontalHeader()
 
-        # Primeiro: todas stretch
         header.setSectionResizeMode(QHeaderView.Stretch)
-
-        # Depois: coluna horário fixa
         header.setSectionResizeMode(0, QHeaderView.Fixed)
-        self.setColumnWidth(0, 80)
+
+        self.setColumnWidth(0, 70)
 
         header.setDefaultAlignment(Qt.AlignCenter)
-        header.setMinimumHeight(40)
+        header.setFixedHeight(48)
+
+    def _build_empty_cells(self):
+        for row in range(self.rowCount()):
+            for col in range(1, self.columnCount()):
+                item = QTableWidgetItem("")
+                item.setFlags(
+                    Qt.ItemIsSelectable |
+                    Qt.ItemIsEnabled
+                )
+                self.setItem(row, col, item)
