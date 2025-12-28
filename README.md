@@ -14,6 +14,5 @@ Agenda feita para ajudar no gerenciamento da Emporium da Beleza.
 ## Arquitetura
 ### src: arquivos gerais
 - main.py: arquivo de teste
-- model: guarda regras de negócio e modelos do sistema
-- view: guarda interfaces da GUI
+- artisan.py: arquivo de migrações e seeds, use -h para mais informações
 ### temp: arquivos temporários de documentação
