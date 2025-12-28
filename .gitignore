@@ -1,3 +1,8 @@
+# Dados gerados em tempo de execução
+data/database/
+data/logs/
+data/tables/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
